@@ -1,0 +1,76 @@
+/* Styling navbar */
+#mainNavbar {
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding: 0.2rem 15%;
+}
+
+#mainNavbar .navbar-brand {
+    color: #00f5d4;
+    font-size: 1.35rem;
+    font-family: 'Autograf', 'Montserrat';
+    font-weight: 700;
+}
+
+#mainNavbar .nav-link {
+    color: white;
+    font-weight: 500;
+    padding: 0.8rem;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+#mainNavbar .nav-link:hover {
+    color: #00f5d4;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+#mainNavbar .nav-link::after {
+    content: '';
+    width: 0px;
+    height: 1px;
+    display: block;
+    background: #00f5d4;
+    transition: all 0.3s ease-in-out;
+}
+
+#mainNavbar .nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar.scrolled {
+    background: #101010;
+    transition: all 0.3s ease-in;
+}
+
+
+@media screen and (min-height: 839px) {
+    #mainNavbar .nav-link {
+        padding: 1rem;
+    }
+}
+
+
+@media screen and (min-height: 690px) {
+    #mainNavbar {
+        font-size: 1rem;
+    }
+
+    #mainNavbar .navbar-brand {
+        font-size: 1.8rem;
+    }
+
+    #mainNavbar .nav-link {
+        padding: 0.7rem;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    #mainNavbar .navbar-brand {
+        font-size: 1.3rem;
+    }
+}

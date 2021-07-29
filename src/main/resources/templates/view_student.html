@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title th:text="'Student Info - ' + ${student.firstName} + ' ' + ${student.lastName}"></title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap"
+              rel="stylesheet">
+
+        <!-- Autograf Font -->
+        <link href="https://db.onlinewebfonts.com/c/c886c670c773597a03ea92b72c8ce524?family=Autograf" rel="stylesheet"
+              type="text/css" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/styles/view.css}">
+        <link rel="stylesheet" th:href="@{/styles/table.css}">
+        <link rel="stylesheet" th:href="@{/styles/button.css}">
+        <link rel="stylesheet" th:href="@{/styles/select.css}">
+        <link rel="stylesheet" th:href="@{/styles/navbar.css}">
+    </head>
+
+    <body>
+        <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-xl fixed-top">
+            <div class="container">
+                <a th:href="@{/}" class="navbar-brand">Xuan An Cao</a>
+
+                <div class="collapse navbar-collapse" id="navLinks">
+                    <ul class="navbar-nav text-uppercase mr-auto">
+                        <li class="nav-item">
+                            <a th:href="@{/students}" class="nav-link">STUDENTS</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a th:href="@{/courses}" class="nav-link">COURSES</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <section id="view" class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        <img class="img-flag" th:src="@{/images/ava_f.jpg}" th:if="${student.gender == 'F'}" alt="">
+                        <img class="img-flag" th:src="@{/images/ava_m.jpg}" th:if="${student.gender == 'M'}" alt="">
+                    </div>
+                    <div class="col-lg-6 student-info">
+                        <h1 th:text="${student.firstName} + ' ' + ${student.lastName}"></h1>
+                        <h2><span>D.O.B: </span><span class="tag" th:text="${#dates.format(student.dob, 'dd-MM-yyyy')}"></span></h2>
+                        <h2><span>Gender: </span><span class="tag" th:text="${student.gender}"></span></h2>
+                        <div>
+                            <form action = "#" th:action="@{'/students/' + ${student.id} + '/update'}" th:object="${student}">
+                                <button class="button-view-update" type="submit">Update Info</button>
+                            </form>
+                            <form action = "#" th:action="@{'/students/' + ${student.id} + '/delete'}" th:object="${student}">
+                                <button class="button-view-delete" type="submit">Delete Student</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 text-center">
+                        <table class="view-student">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Credits</th>
+                                    <th>Teacher</th>
+                                    <th>Details</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="courseAttended: ${coursesAttended}">
+                                    <td class="num" th:text="${courseAttendedStat.count}"></td>
+                                    <td th:text="${courseAttended.id}"></td>
+                                    <td th:text="${courseAttended.name}"></td>
+                                    <td class="num" th:text="${courseAttended.credits}"></td>
+                                    <td th:text="${courseAttended.teacher}"></td>
+                                    <td><a th:href = "@{'/courses/' + ${courseAttended.id}}">View Details >></a></td>
+                                    <td>
+                                        <form action = "#" th:action="@{'/students/' + ${student.id} + '/removeCourse'}">
+                                            <input type="hidden" name="cid" th:value="${courseAttended.id}" />
+                                            <button class="button-view-remove" type="submit">x</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-12 text-center" th:if="${coursesNotAttended.size() > 0}">
+                        <form action = "#" th:action="@{'/students/' + ${student.id} + '/addCourse'}">
+                            <div class="custom-select">
+                                <select id="addCourse" name="cid" required>
+                                    <option disabled value=""></option>
+                                    <option th:each="course: ${coursesNotAttended}" th:value="${course.id}"
+                                            th:text="${course.id} + ' - ' + ${course.name}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div>
+                                <button class="button-view-add" type="submit">Add Course</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+            </script>
+            <script th:src="@{/scripts/navbar.js}"></script>
+            <script th:src="@{/scripts/selector.js}"></script>
+        </section>
+    </body>
+
+</html>

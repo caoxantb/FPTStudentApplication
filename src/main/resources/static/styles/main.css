@@ -1,0 +1,41 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color:whitesmoke;
+    background-color:#101010;
+}
+
+h1 {
+    font-size:3rem;
+    font-weight: 700;
+    text-align: center;
+    color: #00f5d4;
+    margin: 3rem 0 0 0;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size:1.5rem;
+    font-weight: 300;
+    text-align: center;
+    display: block;
+    margin: 3rem 0 0 0;
+    color: #e500a4;
+}
+
+#index{
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 9rem 0 3rem 0;
+}
+
+#list{
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 3rem 0;
+}

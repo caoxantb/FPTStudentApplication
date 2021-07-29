@@ -1,0 +1,56 @@
+button {
+    outline: none;
+    height: 60px;
+    text-align: center;
+    width: 400px;
+    background: #72efdd;
+    border: 2px solid #72efdd;
+    color: #f20089;
+    margin: 0 0 4rem 0;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    color: #72efdd;
+    border: 2px solid #f20089;
+    background: #f20089;
+}
+
+button:active {
+    letter-spacing: 2px;
+}
+
+button.button-view-update {
+    margin: 2rem 0 1rem 0;
+}
+
+button.button-view-delete {
+    margin: 1rem 0 4rem 0;
+}
+
+button.button-view-remove {
+    margin: 0 0 0 0;
+    width: 50px;
+    height: 50px;
+}
+
+button.button-view-add {
+    margin: 2rem 0 0 0;
+}
+
+button.save {
+    margin: 5rem 0 0 0;
+}
+
+.sel {
+    border: solid 3px #675f6b;
+    display: inline-block;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}

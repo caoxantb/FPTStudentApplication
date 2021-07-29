@@ -1,0 +1,53 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color:whitesmoke;
+    background-color:#101010;
+}
+
+#view{
+    position: relative;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 3rem 0;
+}
+
+#view h1 {
+    font-size:3rem;
+    font-weight: 700;
+    color: #00f5d4;
+    margin: 2rem 0 0 0;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+}
+
+#view h2 {
+    font-size:1.5rem;
+    margin-top: 1rem;
+    display: block;
+    color: #e500a4;
+    font-weight: bold;
+}
+
+#view h2 span.tag {
+    color: whitesmoke;
+    font-weight: 400;
+}
+
+#view div.student-info {
+    text-align: center;
+}
+
+@media screen and (min-width: 991px) {
+    #view div.student-info {
+        text-align: left;
+    }
+}
+
+#view img {
+    width: 25rem;
+    height: 25rem;
+    position: relative;
+    border-radius: 50%;
+}

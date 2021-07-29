@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Update Student</title>
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap"
+              rel="stylesheet">
+
+        <!-- Autograf Font -->
+        <link href="https://db.onlinewebfonts.com/c/c886c670c773597a03ea92b72c8ce524?family=Autograf" rel="stylesheet"
+              type="text/css" />
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+              rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+              crossorigin="anonymous">
+
+        <link rel="stylesheet" th:href="@{/styles/select.css}">
+        <link rel="stylesheet" th:href="@{/styles/save.css}">
+        <link rel="stylesheet" th:href="@{/styles/button.css}">
+        <link rel="stylesheet" th:href="@{/styles/navbar.css}">
+    </head>
+
+    <body>
+        <nav id="mainNavbar" class="navbar navbar-dark navbar-expand-xl fixed-top">
+            <div class="container">
+                <a th:href="@{/}" class="navbar-brand">Xuan An Cao</a>
+
+                <div class="collapse navbar-collapse" id="navLinks">
+                    <ul class="navbar-nav text-uppercase mr-auto">
+                        <li class="nav-item">
+                            <a th:href="@{/students}" class="nav-link">STUDENTS</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a th:href="@{/courses}" class="nav-link">COURSES</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <h1>UPDATE STUDENT</h1>
+        <section id="save" class="fluid-container">
+            <div class="container">
+                <form action = "#" th:action="@{'/students/' + ${student.id} + '/saveUpdate'}" th:object="${student}" method="POST">
+                    <div class="row text-center">
+                        <div class="col-lg-12">
+                            <div class="form-input">
+                                <input id="sfname" name="sfname" type="text" th:field="*{firstName}"
+                                       th:value="${student.firstName}"required>
+                                <label for="sfname">First Name</label>
+                            </div>
+                            <div class="form-input">
+                                <input id="slname" name="slname" type="text" th:field="*{lastName}"
+                                       th:value="${student.lastName}" required>
+                                <label for="slname">Last Name</label>
+                            </div>
+                            <div class="form-input">
+                                <input id="dob" name="dob" type="date" th:field="*{dob}" onfocus="(this.type='date')"
+                                       onblur="if(!this.value)this.type='text'" th:value="${student.dob}" required>
+                                <label for="dob">Date of Birth:</label>
+                            </div>
+                            <div class="form-input">
+                                <p class="credits">Gender</p>
+                            </div>
+                            <div class="form-input custom-select text-center">
+                                <select id="credits" name="credits" th:field="*{gender}" required th:value="${student.gender}">
+                                    <option th:value="${student.gender}" th:text="${student.gender}"></option>
+                                    <option value="F" >F</option>
+                                    <option value="M" >M</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <button class="save" type="submit">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+        <script th:src="@{/scripts/selector.js}"></script>
+        <script th:src="@{/scripts/navbar.js}"></script>
+    </body>
+</html>
